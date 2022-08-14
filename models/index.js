@@ -12,4 +12,4 @@ Blog.belongsTo(User, {
 
 
 
-module.exports = { User, Project };
+module.exports = { User, Blog };
