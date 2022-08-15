@@ -1,13 +1,12 @@
 const router = require('express').Router();
 const {User, Blog}= require("../models")
 
-router.get("/", async(req, res) => {
-    try{
-        const users = User.findAll();
-        res.json(users)
-    }catch (err){
-        res.status(400).json(err)
-    }
+
+router.get("/", (req,res) => {
+    Blog.findAll().then(data=>{
+        const hbsData = data.map(blog=>blog.toJSON())
+        res.render("home", {blogs: hbsData})
+    })
 })
 
 
